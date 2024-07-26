@@ -17,9 +17,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ route("pengeluaran.index") }}">
+            <a class="nav-link collapsed" href="{{ route('pengeluaran.index') }}">
                 <i class="bi bi-wallet-fill"></i>
                 <span>Pengeluaran</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-faq.html">
+                <i class="bi bi-chat"></i>
+                <span>Pesan </span>
             </a>
         </li>
     </ul>

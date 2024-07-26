@@ -22,6 +22,8 @@
  <script src="assets/vendor/echarts/echarts.min.js"></script>
  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
 
+ <!-- SweetAlert2 JS -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
  <!-- Template Main JS File -->
  <script src="assets/js/main1.js"></script>
 

@@ -75,7 +75,7 @@
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editModal{{ $item->id }}">Edit</button>
                                                 <form action="{{ route('pengeluaran.destroy', $item->id) }}" method="POST"
-                                                    class="d-inline">
+                                                    class="d-inline" onsubmit="return confirm('Apa kamu yakin?');">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"

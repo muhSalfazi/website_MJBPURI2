@@ -11,6 +11,8 @@ class AuthController extends Controller
 {
     /**
      * Show the login form.
+     *
+     * @return \Illuminate\View\View
      */
     public function showLoginForm()
     {
@@ -19,6 +21,9 @@ class AuthController extends Controller
 
     /**
      * Handle the login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function login(Request $request)
     {
@@ -27,31 +32,38 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
+        // Retrieve user by username
         $user = DB::table('users')->where('username', $request->username)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
+            // Log in the user
             Auth::loginUsingId($user->id);
 
-            DB::table('users')
-                ->where('id', $user->id)
-                ->update(['last_login' => now()]);
+            // Update last login timestamp
+            DB::table('users')->where('id', $user->id)->update(['last_login' => now()]);
 
             return redirect()->route('dashboard');
+              
         } else {
-            return back()->withErrors([
-                'username' => 'Invalid credentials.',
-            ]);
+            return redirect()->route('login') ->with('msg', 'Password atau kata sandi anda salah.')
+            ->with('error', false);
         }
     }
 
     /**
      * Handle the logout request.
-        */
-        public function logout(Request $request)
-        {
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
-        }
+
+        return redirect()->route('welcome')
+            ->with('msg', 'Logout successful.')
+            ->with('error', false);
+    }
 }

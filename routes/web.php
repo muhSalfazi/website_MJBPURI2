@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\WelcomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +23,16 @@ Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 // Dashboard route with authentication
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard')->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');;
+// Public routes
+Route::get('/', [WelcomeController::class, 'showWelcome'])->name('welcome');
+
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 // Donasi routes with authentication
 Route::resource('donasi', DonasiController::class)->middleware('auth');
 Route::resource('pengeluaran', PengeluaranController::class)->middleware('auth');

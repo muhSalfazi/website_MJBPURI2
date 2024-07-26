@@ -18,7 +18,7 @@
             <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
-  <!-- Donasi Card -->
+                    <!-- Donasi Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
 
@@ -30,9 +30,12 @@
                                         <h6>Filter</h6>
                                     </li>
 
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'today']) }}">Today</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'month']) }}">This Month</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'year']) }}">This Year</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('dashboard', ['filter' => 'today']) }}">Today</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'month']) }}">This
+                                            Month</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'year']) }}">This
+                                            Year</a></li>
                                 </ul>
                             </div>
 
@@ -41,10 +44,10 @@
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-currency-dollar"></i>
+                                        <i class="bi bi-bank"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${{ number_format($totalDonasi, 2) }}</h6>
+                                        <h6>Rp {{ number_format($totalDonasi, 2) }}</h6>
                                         {{-- <span class="text-success small pt-1 fw-bold">8%</span> <span
                                             class="text-muted small pt-2 ps-1">increase</span> --}}
 
@@ -67,9 +70,12 @@
                                         <h6>Filter</h6>
                                     </li>
 
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'today']) }}">Today</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'month']) }}">This Month</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'year']) }}">This Year</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('dashboard', ['filter' => 'today']) }}">Today</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'month']) }}">This
+                                            Month</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'year']) }}">This
+                                            Year</a></li>
                                 </ul>
                             </div>
 
@@ -81,7 +87,7 @@
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${{ number_format($totalPengeluaran, 2) }}</h6>
+                                        <h6>Rp {{ number_format($totalPengeluaran, 2) }}</h6>
                                         {{-- <span class="text-success small pt-1 fw-bold">12%</span> <span
                                             class="text-muted small pt-2 ps-1">increase</span> --}}
 
@@ -92,7 +98,7 @@
                         </div>
                     </div><!-- End Sales Card -->
 
-                  
+
                     <!-- Total Saldo Card -->
                     <div class="col-xxl-4 col-xl-6">
                         <div class="card info-card customers-card">
@@ -105,9 +111,12 @@
                                         <h6>Filter</h6>
                                     </li>
 
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'today']) }}">Today</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'month']) }}">This Month</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'year']) }}">This Year</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('dashboard', ['filter' => 'today']) }}">Today</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('dashboard', ['filter' => 'month']) }}">This Month</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard', ['filter' => 'year']) }}">This
+                                            Year</a></li>
                                 </ul>
                             </div>
 
@@ -119,8 +128,8 @@
                                         <i class="bi-wallet2"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${{ number_format($totalSaldo, 2) }}</h6>
-                                        {{-- <span class="text-danger small pt-1 fw-bold">12%</span> <span
+                                        <h6>Rp {{ number_format($totalSaldo, 2) }}</h6>
+                                            {{-- <span class="text-danger small pt-1 fw-bold">12%</span> <span
                                             class="text-muted small pt-2 ps-1">decrease</span> --}}
 
                                     </div>

@@ -41,7 +41,8 @@ class DonasiController extends Controller
         ]);
 
         Donasi::create($request->all());
-        return redirect()->route('donasi.index')->with('success', 'Donasi created successfully.');
+        return redirect()->route('donasi.index')->with('msg', 'Donasi created successfully.')->with('error', false);
+        
     }
 
 
@@ -72,13 +73,13 @@ class DonasiController extends Controller
         $donasi->update($data);
 
         // Redirect with a success message
-        return redirect()->route('donasi.index')->with('success', 'Donasi updated successfully.');
+       return redirect()->route('donasi.index')->with('msg', 'Donasi Update successfully.')->with('error', false);
     }
 
     public function destroy($id)
     {
         $donasi = Donasi::find($id);
         $donasi->delete();
-        return redirect()->route('donasi.index')->with('success', 'Donasi deleted successfully.');
+      return redirect()->route('donasi.index')->with('msg', 'Donasi Deleted successfully.')->with('error', false);
     }
 }

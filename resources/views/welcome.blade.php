@@ -50,7 +50,7 @@
                     <!-- <img src="assets/img/logo.png" alt=""> -->
                     <h1 class="sitename">
                         <img src="assets/img/logo-mjb.png" alt="">
-                        Baiturrahman
+                       MJB Puri 2
                     </h1>
 
                 </a>

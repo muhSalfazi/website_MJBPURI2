@@ -4,10 +4,11 @@
 <div class="container-fluid">
     {{-- <div class="row"> --}}
         @include('layout.sidebar')
-        <main id="main" class="main">
+       <main id="main" class="main">
             @yield('content')
         </main>
     {{-- </div> --}}
 </div>
-
+   @yield('scripts')
+   
 @include('layout.footer')

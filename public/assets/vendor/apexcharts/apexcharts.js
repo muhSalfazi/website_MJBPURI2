@@ -1707,14 +1707,14 @@
 
         var stop1 = 0;
         var stop2 = 1;
-        var stop3 = 1;
-        var stop4 = null;
+        // var stop3 = 1;
+        // var stop4 = null;
 
         if (stops !== null) {
           stop1 = typeof stops[0] !== 'undefined' ? stops[0] / 100 : 0;
           stop2 = typeof stops[1] !== 'undefined' ? stops[1] / 100 : 1;
-          stop3 = typeof stops[2] !== 'undefined' ? stops[2] / 100 : 1;
-          stop4 = typeof stops[3] !== 'undefined' ? stops[3] / 100 : null;
+          // stop3 = typeof stops[2] !== 'undefined' ? stops[2] / 100 : 1;
+          // stop4 = typeof stops[3] !== 'undefined' ? stops[3] / 100 : null;
         }
 
         var radial = !!(w.config.chart.type === 'donut' || w.config.chart.type === 'pie' || w.config.chart.type === 'polarArea' || w.config.chart.type === 'bubble');

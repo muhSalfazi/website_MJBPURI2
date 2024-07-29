@@ -23,7 +23,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
+            <a class="nav-link collapsed" href="{{ route('pesan.index') }}">
                 <i class="bi bi-chat"></i>
                 <span>Pesan </span>
             </a>

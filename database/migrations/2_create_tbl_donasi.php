@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nominal_uang');
             $table->string('alamat');
-            $table->text('keterangan');
+            $table->text('kategori');
             $table->timestamps();
         });
     }

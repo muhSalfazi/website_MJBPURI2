@@ -1,16 +1,11 @@
- <!-- ======= Footer ======= -->
  <footer id="footer" class="footer">
      <div class="copyright">
          &copy; Copyright <strong><span>MuhSalfazi</span></strong>. All Rights Reserved
      </div>
      <div class="credits">
-         <!-- All the links in the footer should remain intact. -->
-         <!-- You can delete the links only if you purchased the pro version. -->
-         <!-- Licensing information: https://bootstrapmade.com/license/ -->
-         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
          Designed by <a href="https://muhsalfazi-profile.netlify.app" target="_blank">Salman Fauzi</a>
      </div>
- </footer><!-- End Footer -->
+ </footer>
 
  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
          class="bi bi-arrow-up-short"></i></a>
@@ -26,6 +21,27 @@
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
  <!-- Template Main JS File -->
  <script src="assets/js/main1.js"></script>
+ <!-- SweetAlert Scripts -->
+ <script>
+     document.addEventListener('DOMContentLoaded', function() {
+         @if (session('msg'))
+             Swal.fire({
+                 title: '{{ session('error') ? 'Error' : 'Success' }}',
+                 text: '{{ session('msg') }}',
+                 icon: '{{ session('error') ? 'error' : 'success' }}',
+                 confirmButtonText: 'OK'
+             });
+         @endif
+     });
+ </script>
+ {{-- loader website --}}
+ <script>
+     // JavaScript untuk menyembunyikan loader setelah halaman selesai dimuat
+     window.addEventListener('load', function() {
+         document.querySelector('.loader').style.display = 'none';
+         document.querySelector('.content').style.display = 'block';
+     });
+ </script>
 
  </body>
 

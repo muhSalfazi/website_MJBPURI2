@@ -37,7 +37,7 @@ class DonasiController extends Controller
             'name' => 'required',
             'nominal_uang' => 'required',
             'alamat' => 'required',
-            'keterangan' => 'sometimes',
+            'kategori' => 'sometimes',
         ]);
 
         Donasi::create($request->all());
@@ -53,14 +53,14 @@ class DonasiController extends Controller
             'name' => 'nullable|string|max:255',
             'nominal_uang' => 'nullable|numeric',
             'alamat' => 'nullable|string',
-            'keterangan' => 'nullable|string|max:255',
+            'kategori' => 'nullable|string|max:255',
         ]);
 
         // Find the record by ID or fail
         $donasi = Donasi::findOrFail($id);
 
         // Update only fields that are present in the request
-        $data = $request->only(['name', 'nominal_uang', 'alamat', 'keterangan']);
+        $data = $request->only(['name', 'nominal_uang', 'alamat', 'kategori']);
 
         // Avoid setting fields to null if they are not provided in the request
         foreach ($data as $key => $value) {

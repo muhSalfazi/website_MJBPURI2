@@ -6,6 +6,9 @@ use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PesanController;
+use App\Http\Controllers\ShowPesanController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,10 +32,13 @@ Route::get('/dashboard', function () {
 
 // Public routes
 Route::get('/', [WelcomeController::class, 'showWelcome'])->name('welcome');
-
-
+Route::get('/mjb', [WelcomeController::class, 'donasi'])->name('tbl-donasi');
+Route::post('/contact', [PesanController::class, 'store'])->name('pesan.store');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 // Donasi routes with authentication
 Route::resource('donasi', DonasiController::class)->middleware('auth');
 Route::resource('pengeluaran', PengeluaranController::class)->middleware('auth');
+
+Route::get('/pesan', [ShowPesanController::class, 'index'])->name('pesan.index')->middleware('auth');
+Route::delete('/pesan/{id}', [ShowPesanController::class, 'destroy'])->name('pesan.destroy')->middleware('auth');

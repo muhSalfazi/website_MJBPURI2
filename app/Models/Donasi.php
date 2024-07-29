@@ -15,7 +15,7 @@ class Donasi extends Model
         'name',
         'nominal_uang',
         'alamat',
-        'keterangan',
+        'kategori',
         'created_at'
     ];
 

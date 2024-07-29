@@ -26,5 +26,11 @@ class WelcomeController extends Controller
             'totalSaldo' => $totalSaldo,
         ]);
     }
+
+     public function donasi(Request $request)
+     {
+         $donasi = Donasi::all();
+        return view('tbl_donasi',compact('donasi'));
+     }
     
 }

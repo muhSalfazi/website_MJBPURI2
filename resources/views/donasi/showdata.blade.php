@@ -53,7 +53,7 @@
                                         <th scope="col" class="text-center">Nama</th>
                                         <th scope="col" class="text-center">Nominal Uang</th>
                                         <th scope="col" class="text-center">Alamat</th>
-                                        <th scope="col" class="text-center">Keterangan</th>
+                                        <th scope="col" class="text-center">Kategori</th>
                                         <th scope="col" class="text-center">Tgl Donasi</th>
                                         <th scope="col" class="text-center">Aksi</th>
                                     </tr>
@@ -68,13 +68,13 @@
                                             <td class="text-center">Rp {{ number_format($item->nominal_uang, 0, ',', '.') }}
                                             </td>
                                             <td class="text-center">{{ $item->alamat }}</td>
-                                            <td class="text-center">{{ $item->keterangan }}</td>
+                                            <td class="text-center">{{ $item->kategori }}</td>
                                             <td class="text-center">{{ $item->created_at->format('d-m-Y') }}</td>
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-sm ms-2 mt-1"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#editModal{{ $item->id }}">Edit</button>
-                                                <form action="{{ route('pengeluaran.destroy', $item->id) }}" method="POST"
+                                                <form action="{{ route('donasi.destroy', $item->id) }}" method="POST"
                                                     class="d-inline" onsubmit="return confirm('Apa kamu yakin?');">
                                                     @csrf
                                                     @method('DELETE')
@@ -118,8 +118,8 @@
                             <input type="text" class="form-control" id="alamat" name="alamat" required>
                         </div>
                         <div class="mb-3">
-                            <label for="keterangan" class="form-label">Keterangan</label>
-                            <input type="text" class="form-control" id="keterangan" name="keterangan">
+                            <label for="kategori" class="form-label">kategori</label>
+                            <input type="text" class="form-control" id="kategori" name="kategori">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -162,9 +162,9 @@
                                     name="alamat" placeholder="{{ $item->alamat }}">
                             </div>
                             <div class="mb-3">
-                                <label for="keterangan{{ $item->id }}" class="form-label">Keterangan</label>
-                                <input type="text" class="form-control" id="keterangan{{ $item->id }}"
-                                    name="keterangan" placeholder="{{ $item->keterangan }}">
+                                <label for="kategori{{ $item->id }}" class="form-label">kategori</label>
+                                <input type="text" class="form-control" id="kategori{{ $item->id }}"
+                                    name="kategori" placeholder="{{ $item->kategori }}">
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -25,19 +25,26 @@
                         </button>
 
                         <!-- Filter Form -->
-                        <!-- Filter Form -->
                         <form method="GET" action="{{ route('donasi.index') }}" class="mb-3">
                             <div class="row mt-2">
-                                <div class="col-md-4">
-                                    <label for="start_date" class="form-label">Tanggal Mulai</label>
-                                    <input type="date" id="start_date" name="start_date" class="form-control"
-                                        placeholder="Start Date" value="{{ request('start_date') }}">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="end_date" class="form-label">Tanggal Akhir</label>
-                                    <input type="date" id="end_date" name="end_date" class="form-control"
-                                        placeholder="End Date" value="{{ request('end_date') }}">
-                                </div>
+ <div class="col-md-4">
+    <label for="start_date" class="form-label">Tanggal Mulai</label>
+    <input type="text" id="start_date" name="start_date" class="form-control"
+           value="{{ request('start_date') }}" 
+           onfocus="(this.type='date'); this.placeholder = '';" 
+           onblur="if(this.value==''){this.type='text';this.placeholder='Start Date';}" 
+           placeholder="Start Date">
+</div>
+<div class="col-md-4">
+    <label for="end_date" class="form-label">Tanggal Akhir</label>
+    <input type="text" id="end_date" name="end_date" class="form-control"
+           value="{{ request('end_date') }}" 
+           onfocus="(this.type='date'); this.placeholder = '';" 
+           onblur="if(this.value==''){this.type='text';this.placeholder='End Date';}" 
+           placeholder="End Date">
+</div>
+
+
                                 <div class="col-md-4 d-flex align-items-end mt-1">
                                     <button type="submit" class="btn btn-primary btn-sm">Filter</button>
                                     <a href="{{ route('donasi.index') }}" class="btn btn-secondary btn-sm ms-2">Reset</a>

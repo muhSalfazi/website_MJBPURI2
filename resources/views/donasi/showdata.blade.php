@@ -24,17 +24,20 @@
                             Tambah Donasi
                         </button>
                         <!-- Filter Form -->
-                        <!-- Filter Form -->
                         <form method="GET" action="{{ route('donasi.index') }}" class="mb-3">
                             <div class="row mt-2">
                                 <div class="col-md-4">
                                     <label for="start_date" class="form-label">Tanggal Mulai</label>
                                     <input type="date" id="start_date" name="start_date" class="form-control"
+                                        onfocus="(this.type='date')"
+                                        onblur="if(this.value==''){this.type='text';this.placeholder='Start Date';}"
                                         placeholder="Start Date" value="{{ request('start_date') }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="end_date" class="form-label">Tanggal Akhir</label>
                                     <input type="date" id="end_date" name="end_date" class="form-control"
+                                       onfocus="(this.type='date')"
+                                        onblur="if(this.value==''){this.type='text';this.placeholder='End date';}"
                                         placeholder="End Date" value="{{ request('end_date') }}">
                                 </div>
                                 <div class="col-md-4 d-flex align-items-end mt-1">

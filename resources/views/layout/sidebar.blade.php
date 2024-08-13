@@ -28,6 +28,16 @@
                 <span>Pesan </span>
             </a>
         </li>
+        <li class="nav-item">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <a class="nav-link collapsed" href="#"
+                onclick="event.preventDefault(); if (confirm('Are you sure you want to log out?')) document.getElementById('logout-form').submit();">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+            </a>
+        </li>
     </ul>
 </aside><!-- End Sidebar-->
 <!-- End Sidebar-->

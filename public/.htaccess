@@ -1,7 +1,10 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+  <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
 
     RewriteEngine On
 
@@ -19,3 +22,20 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Secure directories by denying public access
+<Directory "path/to/your/app/public/vendor">
+    Require all denied
+</Directory>
+
+<Directory "path/to/your/app/public/assets">
+    Require all denied
+</Directory>
+
+<Directory "path/to/your/app/public/img">
+    Require all denied
+</Directory>
+
+<Directory "path/to/your/app/public/video">
+    Require all denied
+</Directory>

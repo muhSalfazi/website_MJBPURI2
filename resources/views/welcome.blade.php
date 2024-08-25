@@ -327,161 +327,199 @@
 
                 <div class="isotope-layout" data-default-filter="*" data-layout="masonry"
                     data-sort="original-order">
-
                     <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
                         <li data-filter="*" class="filter-active">All</li>
                         <li data-filter=".filter-app">Denah</li>
                         <li data-filter=".filter-product">Schedule</li>
-                        {{-- <li data-filter=".filter-branding">Web</li> --}}
                     </ul><!-- End Portfolio Filters -->
 
                     <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                        {{-- denah 1 --}}
+                        <!-- schedule 1 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                            <img src="{{ asset('assets/img/Schedule1.jpg') }}" class="img-fluid"
+                                alt="Schedule Pembangunan">
+                            <div class="portfolio-info">
+                                <h4>Schedule Pembangunan</h4>
+                                <p>Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds. Duren, Kec. Klari,
+                                    Karawang.</p>
+                                <a href="{{ asset('assets/img/Schedule1.jpg') }}" title="Schedule Pembangunan"
+                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+                        <!-- denah 1 -->
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb1.jpg" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/img/denah_mjb1.jpg') }}" class="img-fluid" alt="Tampak depan">
                             <div class="portfolio-info">
                                 <h4>Tampak depan</h4>
                                 <p>Tampak depan, Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds.
                                     Duren, Kec. Klari, Karawang.</p>
-                                <a href="assets/img/denah_mjb1.jpg" title="Tampak Depan"
-                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- end --}}
-                        {{-- denah 2 --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Tampak samping</h4>
-                                <p>Tampak samping, Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds.
-                                    Duren, Kec. Klari, Karawang.</p>
-                                <a href="assets/img/denah_mjb2.jpg" title="Tampak samping"
-                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- denah 3 --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Tampak samping</h4>
-                                <p>Tampak samping, Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds.
-                                    Duren, Kec. Klari, Karawang.</p>
-                                <a href="assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Tampak samping"
-                                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- denah 4 --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb4.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Layout Ploting Area</h4>
-                                <p>Layout Ploting Area,Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds.
-                                    Duren, Kec. Klari, Karawang</p>
-                                <a href="assets/img/denah_mjb4.jpg" title="Layout Ploting Area"
-                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- denah 5 --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb5.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Layout Rencana Foot Plat dan Bore Pile.</h4>
-                                <p>Layout Rencana Foot Plat dan Bore Pile.Pembangunan Mesjid Jami Baiturrahman Perumahan
-                                    Puri Kosambi 2 Ds. Duren, Kec. Klari, Karawang</p>
-                                <a href="assets/img/denah_mjb5.jpg" title="Layout Rencana Foot Plat dan Bore Pile."
-                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- denah 6 --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb5.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Rencana Pondasi Sloof.</h4>
-                                <p>Rencana Pondasi Sloof.Pembangunan Mesjid Jami Baiturrahman Perumahan
-                                    Puri Kosambi 2 Ds. Duren, Kec. Klari, Karawang</p>
-                                <a href="assets/img/denah.jpg" title="Rencana Pondasi Sloof."
-                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- denah 7 --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb6.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Rencana Kolom Struktur Lt. 1.</h4>
-                                <p>Rencana Kolom Struktur Lt. 1..Pembangunan Mesjid Jami Baiturrahman Perumahan Puri
-                                    Kosambi 2
-                                    Ds. Duren, Kec. Klari, Karawang</p>
-                                <a href="assets/img/denah_mjb6.jpg" title="Rencana Kolom Struktur Lt. 1."
-                                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- denah 8 --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <img src="assets/img/denah_mjb7.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Rencana Ring Balok (Ev. 4,50 mtr untuk Balok B1 & Ev. 4,30 mtr untuk Balok B2.)</h4>
-                                <p>Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds. Duren, Kec. Klari,
-                                    Karawang</p>
-                                <a href="assets/img/denah_mjb7.jpg" title="Rencana Kolom Struktur Lt. 1."
-                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div><!-- End Portfolio Item -->
-                        {{-- jadwal --}}
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <img src="assets/img/Schedule1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Schedule Pembangunan</h4>
-                                <p>Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds. Duren, Kec. Klari,
-                                    Karawang</p>
-                                <a href="assets/img/Schedule1.jpg" title="Schedule Pembangunan"
-                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                <a href="{{ asset('assets/img/denah_mjb1.jpg') }}" title="Tampak Depan"
+                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
+                        <!-- schedule 2 -->
                         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                            <img src="assets/img/Schedule1.jpg" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/img/Schedule2.jpg') }}" class="img-fluid"
+                                alt="Schedule Pembangunan">
                             <div class="portfolio-info">
                                 <h4>Schedule Pembangunan</h4>
                                 <p>Jadwal Pelaksanaan Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds.
-                                    Duren, Kec. Klari, Karawang</p>
-                                <a href="assets/img/Schedule2.jpg" title="PSchedule Pembangunan"
-                                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                    Duren, Kec. Klari, Karawang.</p>
+                                <a href="{{ asset('assets/img/Schedule2.jpg') }}" title="Schedule Pembangunan"
+                                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+                        <!-- denah 2 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <img src="{{ asset('assets/img/denah_mjb2.jpg') }}" class="img-fluid"
+                                alt="Tampak samping">
+                            <div class="portfolio-info">
+                                <h4>Tampak samping</h4>
+                                <p>Tampak samping, Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds.
+                                    Duren, Kec. Klari, Karawang.</p>
+                                <a href="{{ asset('assets/img/denah_mjb2.jpg') }}" title="Tampak samping"
+                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+
+
+                        <!-- denah 3 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <img src="{{ asset('assets/img/denah_mjb3.jpg') }}" class="img-fluid"
+                                alt="Tampak samping">
+                            <div class="portfolio-info">
+                                <h4>Tampak samping</h4>
+                                <p>Tampak samping, Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2 Ds.
+                                    Duren, Kec. Klari, Karawang.</p>
+                                <a href="{{ asset('assets/img/denah_mjb3.jpg') }}" title="Tampak samping"
+                                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+                        <!-- denah 4 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <img src="{{ asset('assets/img/denah_mjb4.jpg') }}" class="img-fluid"
+                                alt="Layout Ploting Area">
+                            <div class="portfolio-info">
+                                <h4>Layout Ploting Area</h4>
+                                <p>Layout Ploting Area, Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2
+                                    Ds. Duren, Kec. Klari, Karawang.</p>
+                                <a href="{{ asset('assets/img/denah_mjb4.jpg') }}" title="Layout Ploting Area"
+                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+                        <!-- denah 5 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <img src="{{ asset('assets/img/denah_mjb5.jpg') }}" class="img-fluid"
+                                alt="Layout Rencana Foot Plat dan Bore Pile">
+                            <div class="portfolio-info">
+                                <h4>Layout Rencana Foot Plat dan Bore Pile</h4>
+                                <p>Layout Rencana Foot Plat dan Bore Pile, Pembangunan Mesjid Jami Baiturrahman
+                                    Perumahan Puri Kosambi 2 Ds. Duren, Kec. Klari, Karawang.</p>
+                                <a href="{{ asset('assets/img/denah_mjb5.jpg') }}"
+                                    title="Layout Rencana Foot Plat dan Bore Pile"
+                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+                        <!-- denah 6 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <img src="{{ asset('assets/img/denah_mjb6.jpg') }}" class="img-fluid"
+                                alt="Rencana Kolom Struktur">
+                            <div class="portfolio-info">
+                                <h4>Rencana Kolom Struktur .</h4>
+                                <p>Rencana Kolom Struktur., Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi
+                                    2 Ds. Duren, Kec. Klari, Karawang.</p>
+                                <a href="{{ asset('assets/img/denah_mjb6.jpg') }}" title="Rencana Pondasi Sloof"
+                                    data-gallery="portfolio-gallery-product" class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+                        <!-- denah 7 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <img src="{{ asset('assets/img/denah_mjb7.jpg') }}" class="img-fluid"
+                                alt="Rencana Kolom Struktur Lt. 1">
+                            <div class="portfolio-info">
+                                <h4>Rencana Kolom Ring Blok</h4>
+                                <p>Rencana Ring Balok (Ev. 4,50 mtr untuk Balok B1 & Ev. 4,30 mtr untuk Balok B2.).</p>
+                                <a href="{{ asset('assets/img/denah_mjb7.jpg') }}"
+                                    title="Rencana Kolom Struktur Lt. 1" data-gallery="portfolio-gallery-branding"
+                                    class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
+                            </div>
+                        </div><!-- End Portfolio Item -->
+
+                        <!-- denah 8 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <img src="{{ asset('assets/img/denah_mjb8.jpg') }}" class="img-fluid"
+                                alt="Rencana Pondasi Sloof">
+                            <div class="portfolio-info">
+                                <h4>Rencana Pondasi Sloof</h4>
+                                <p>Rencana Pondasi Sloof, Pembangunan Mesjid Jami Baiturrahman Perumahan Puri Kosambi 2
+                                    Ds. Duren, Kec. Klari, Karawang.</p>
+                                <a href="{{ asset('assets/img/denah_mjb8.jpg') }}"
+                                    title="Rencana Kolom Struktur Lt. 2" data-gallery="portfolio-gallery-app"
+                                    class="glightbox preview-link">
+                                    <i class="bi bi-zoom-in"></i>
+                                </a>
+                                <a href="portfolio-details.html" title="More Details" class="details-link">
+                                    <i class="bi bi-link-45deg"></i>
+                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
                     </div><!-- End Portfolio Container -->
-
                 </div>
+
 
             </div>
 
@@ -650,7 +688,7 @@
             });
         }
 
-        function contactWhatsApp() {
+        function contactWhatsApp - () {
             window.open('https://wa.me/6281297412347', '_blank');
         }
     </script>

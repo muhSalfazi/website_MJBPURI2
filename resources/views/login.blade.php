@@ -161,6 +161,18 @@
             width: 300px !important;
         }
     </style>
+     <!-- Tambahkan JavaScript -->
+     <script>
+        // Mengecek apakah ada session 'session_expired' yang ditambahkan setelah redirect dari middleware
+        @if(session('session_expired'))
+            Swal.fire({
+                title: 'Session Expired',
+                text: 'Sesi Anda telah berakhir. Silakan masuk lagi.',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+            });
+        @endif
+    </script>
 </body>
 
 </html>

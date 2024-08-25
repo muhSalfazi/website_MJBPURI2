@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonasiController;
@@ -21,24 +20,26 @@ use App\Http\Controllers\ShowPesanController;
 */
 
 // Routes for authentication
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10,1'); // Rate limit login attempts
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1'); // Rate limit login attempts
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// Dashboard route with authentication
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('auth');
+// Routes for authenticated users
+Route::group(['middleware' => ['auth', 'check.session']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Donasi routes
+    Route::resource('donasi', DonasiController::class);
+
+    // Pengeluaran routes
+    Route::resource('pengeluaran', PengeluaranController::class);
+
+    // Pesan routes
+    Route::get('/pesan', [ShowPesanController::class, 'index'])->name('pesan.index');
+    Route::delete('/pesan/{id}', [ShowPesanController::class, 'destroy'])->name('pesan.destroy');
+});
 
 // Public routes
 Route::get('/', [WelcomeController::class, 'showWelcome'])->name('welcome');
 Route::get('/mjb', [WelcomeController::class, 'donasi'])->name('tbl-donasi');
 Route::post('/contact', [PesanController::class, 'store'])->name('pesan.store');
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
-// Donasi routes with authentication
-Route::resource('donasi', DonasiController::class)->middleware('auth');
-Route::resource('pengeluaran', PengeluaranController::class)->middleware('auth');
-
-Route::get('/pesan', [ShowPesanController::class, 'index'])->name('pesan.index')->middleware('auth');
-Route::delete('/pesan/{id}', [ShowPesanController::class, 'destroy'])->name('pesan.destroy')->middleware('auth');

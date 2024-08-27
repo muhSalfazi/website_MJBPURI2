@@ -98,7 +98,10 @@
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
                                     </form>
-
+                                    <div class="credits mt-3">
+                                        
+                                        <a href="{{ route('welcome') }}" class="back-to-home"><i class="bi bi-house">Back to Home</i></a>
+                                    </div>
                                 </div>
                             </div>
 

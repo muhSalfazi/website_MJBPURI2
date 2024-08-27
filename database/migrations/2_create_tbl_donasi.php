@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nominal_uang');
             $table->string('alamat');
             $table->text('kategori');
+            $table->date('tgl_donasi')->nullable();
             $table->timestamps();
         });
     }

@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonasiController;
@@ -29,17 +30,41 @@ Route::group(['middleware' => ['auth', 'check.session']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Donasi routes
-    Route::resource('donasi', DonasiController::class);
+    // Display a list of donations
+    Route::get('donasi', [DonasiController::class, 'index'])->name('donasi.index');
+
+    // Show the form for creating a new donation
+    Route::get('donasi/create', [DonasiController::class, 'create'])->name('donasi.create');
+
+    // Store a new donation
+    Route::post('donasi', [DonasiController::class, 'store'])->name('donasi.store');
+
+    // Display a specific donation
+    Route::get('donasi/{id}', [DonasiController::class, 'show'])->name('donasi.show');
+
+    // Show the form for editing a specific donation
+    Route::get('donasi/{id}/edit', [DonasiController::class, 'edit'])->name('donasi.edit');
+
+    // Update a specific donation
+    Route::put('donasi/{id}', [DonasiController::class, 'update'])->name('donasi.update');
+
+    // Delete a specific donation
+    Route::delete('donasi/{id}', [DonasiController::class, 'destroy'])->name('donasi.destroy');
 
     // Pengeluaran routes
     Route::resource('pengeluaran', PengeluaranController::class);
+
+    // download pdf
+    Route::get('/pdf', [DonasiController::class, 'viewpdf'])->name('viewpdf');
 
     // Pesan routes
     Route::get('/pesan', [ShowPesanController::class, 'index'])->name('pesan.index');
     Route::delete('/pesan/{id}', [ShowPesanController::class, 'destroy'])->name('pesan.destroy');
 });
 
+
+
 // Public routes
-Route::get('/', [WelcomeController::class, 'showWelcome'])->name('welcome');
-Route::get('/mjb', [WelcomeController::class, 'donasi'])->name('tbl-donasi');
-Route::post('/contact', [PesanController::class, 'store'])->name('pesan.store');
+Route::get('/', [WelcomeController::class, 'showWelcome'])->name('welcome')->middleware('guest');
+Route::get('/mjb', [WelcomeController::class, 'donasi'])->name('tbl-donasi')->middleware('guest');
+Route::post('/contact', [PesanController::class, 'store'])->name('pesan.store')->middleware('guest');

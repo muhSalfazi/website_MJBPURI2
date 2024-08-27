@@ -16,7 +16,9 @@ class Donasi extends Model
         'nominal_uang',
         'alamat',
         'kategori',
-        'created_at'
+        'created_at',
+        'tgl_donasi'
+        
     ];
 
      protected $casts = [

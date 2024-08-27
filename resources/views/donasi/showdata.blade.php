@@ -47,6 +47,7 @@
                             </div>
                         </form>
 
+                        <button type="button" class="btn btn-danger btn-sm" onclick="window.location='{{ route('viewpdf') }}'"><i class="bi bi-file-pdf-fill"></i>Download PDF</button>
 
                         <div class="table-responsive">
                             <table class="table datatable">
@@ -72,7 +73,10 @@
                                             </td>
                                             <td class="text-center">{{ $item->alamat }}</td>
                                             <td class="text-center">{{ $item->kategori }}</td>
-                                            <td class="text-center">{{ $item->created_at->format('d-m-Y') }}</td>
+                                            <td class="text-center">
+                                                {{ $item->tgl_donasi ? \Carbon\Carbon::parse($item->tgl_donasi)->format('d-m-Y') : '-' }}
+                                            </td>
+                                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-sm ms-2 mt-1"
                                                     data-bs-toggle="modal"
@@ -124,6 +128,10 @@
                             <label for="kategori" class="form-label">kategori</label>
                             <input type="text" class="form-control" id="kategori" name="kategori">
                         </div>
+                        <div class="mb-3">
+                            <label for="tgl_donasi" class="form-label">Tanggal Donasi</label>
+                            <input type="date" class="form-control" id="tgl_donasi" name="tgl_donasi">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -169,6 +177,11 @@
                                 <input type="text" class="form-control" id="kategori{{ $item->id }}"
                                     name="kategori" placeholder="{{ $item->kategori }}">
                             </div>
+                            <div class="mb-3">
+                                <label for="tgl_donasi" class="form-label">Tanggal Donasi</label>
+                                <input type="date" class="form-control" id="tgl_donasi" name="tgl_donasi" value="{{ old('tgl_donasi', $item->tgl_donasi ? \Carbon\Carbon::parse($item->tgl_donasi)->format('Y-m-d') : '') }}">
+                            </div>
+                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

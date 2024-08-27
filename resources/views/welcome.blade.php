@@ -303,7 +303,7 @@
                         <div class="stats-item">
                             <span data-purecounter-start="0" data-purecounter-end=" {{ $totalDonasi ?? 'N/A' }}"
                                 data-purecounter-duration="1" class="purecounter"></span>
-                            <p>Total Dana</p>
+                            <p>Total Donasi yang Diterima</p>
                         </div>
                     </div><!-- End Stats Item -->
 

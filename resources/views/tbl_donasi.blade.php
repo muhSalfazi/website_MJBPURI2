@@ -121,7 +121,7 @@
                                                         {{ htmlspecialchars($d->kategori, ENT_QUOTES, 'UTF-8') }}
                                                     </td>
                                                     <td class="tex-center">
-                                                        {{ htmlspecialchars($d->created_at->format('Y-m-d'), ENT_QUOTES, 'UTF-8') }}
+                                                        {{ $d->tgl_donasi ? \Carbon\Carbon::parse($d->tgl_donasi)->format('d-m-Y') : '-' }}
                                                     </td>
                                                 </tr>
                                             @endforeach

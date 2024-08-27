@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\User;
 class AuthController extends Controller
 {
     /**
@@ -27,13 +27,14 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $request->session()->regenerate();
         $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
+            'username' => 'required|string|min:3|max:50',
+            'password' => 'required|string|min:8|max:255',
         ]);
 
         // Retrieve user by username
-        $user = DB::table('users')->where('username', $request->username)->first();
+        $user = User::where('username', $request->username)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
             // Log in the user

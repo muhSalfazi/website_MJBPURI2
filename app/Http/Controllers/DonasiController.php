@@ -23,31 +23,36 @@ class DonasiController extends Controller
         if ($request->has('start_date') && $request->has('end_date')) {
             $startDate = $request->input('start_date');
             $endDate = $request->input('end_date');
-            
+
             // Sanitize input to prevent any malformed data
-            $query->whereBetween('created_at', [filter_var($startDate, FILTER_SANITIZE_STRING), filter_var($endDate, FILTER_SANITIZE_STRING) . ' 23:59:59']);
+            $query->whereBetween('tgl_donasi', [filter_var($startDate, FILTER_SANITIZE_STRING), filter_var($endDate, FILTER_SANITIZE_STRING) . ' 23:59:59']);
         }
 
         // Fetch donations sorted by created_at in descending order
-        $donasi = $query->orderBy('created_at', 'desc')->get();
+        $donasi = $query->orderBy('tgl_donasi', 'desc')->get();
 
         return view('donasi.showdata', compact('donasi'));
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'nominal_uang' => 'required|numeric',
-            'alamat' => 'required|string',
-            'kategori' => 'sometimes|string',
-            'tgl_donasi' => 'required|date'
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:100',
+        'nominal_uang' => 'required|numeric',
+        'alamat' => 'required|string',
+        'kategori' => 'required|string|in:cash,transfer',
+        'tgl_donasi' => 'required|date'
+    ]);
 
-        Donasi::create($request->all());
+    try {
+        Donasi::create($validated);
 
         return redirect()->route('donasi.index')->with('msg', 'Donasi created successfully.')->with('error', false);
+    } catch (\Exception $e) {
+        return redirect()->route('donasi.index')->with('msg', 'Failed to create Donasi.')->with('error', true);
     }
+}
+
 
     public function update(Request $request, $id)
     {
@@ -55,7 +60,7 @@ class DonasiController extends Controller
             'name' => 'nullable|string|max:255',
             'nominal_uang' => 'nullable|numeric',
             'alamat' => 'nullable|string',
-            'kategori' => 'nullable|string|max:255',
+            'kategori' => 'nullable|string|in:cash,transfer',
             'tgl_donasi' => 'sometimes|date'
         ]);
 
@@ -76,24 +81,61 @@ class DonasiController extends Controller
 
     public function destroy($id)
     {
-      
+
 
         $donasi = Donasi::find($id);
+        if (!$donasi) {
+            return redirect()->route('donasi.index')
+                             ->with('msg', 'Pengeluaran tidak ditemukan.')
+                             ->with('error', true);
+        }
+    
         $donasi->delete();
+        
+        return redirect()->route('donasi.index')
+        ->with('msg', 'Pengeluaran berhasil dihapus.')
+                         ->with('error', false);
 
-        return redirect()->route('donasi.index')->with('msg', 'Donasi deleted successfully.')->with('error', false);
+        // return redirect()->route('donasi.index')->with('msg', 'Donasi deleted successfully.')->with('error', false);
     }
 
-    public function viewpdf()
+    public function viewpdf(Request $request)
     {
-        $donasi = Donasi::all();
-
-        $html = view('export_pdf', compact('donasi'))->render();
-
+        // Validate input dates
+        $request->validate([
+            'start_date' => 'nullable|date_format:Y-m-d',
+            'end_date' => 'nullable|date_format:Y-m-d',
+        ]);
+    
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+    
+        $query = Donasi::query();
+    
+        // Apply date filters if provided
+        if ($startDate && $endDate) {
+            // Sanitize input to prevent any malformed data
+            $query->whereBetween('tgl_donasi', [
+                filter_var($startDate, FILTER_SANITIZE_STRING) . ' 00:00:00', 
+                filter_var($endDate, FILTER_SANITIZE_STRING) . ' 23:59:59'
+            ]);
+        }
+    
+        // Fetch donations sorted by tgl_donasi in descending order
+        $donasi = $query->orderBy('tgl_donasi', 'desc')->get();
+    
+        // Generate HTML view with dates
+        $html = view('export_pdf', [
+            'donasi' => $donasi,
+            'start_date' => $startDate,
+            'end_date' => $endDate
+        ])->render();
+    
         $mpdf = new Mpdf();
-
+    
         $mpdf->WriteHTML($html);
-
+    
         return $mpdf->Output('donasi.pdf', 'D');
     }
+    
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone', 15);
             $table->text('pesan');
+            $table->boolean('is_accessed')->default(false);
             $table->timestamps();
         });
     }

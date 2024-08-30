@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Data Donasi</title>
+    <title>Data Pengeluaran</title>
     <link href="assets/img/logo-mjb.png" rel="icon">
     <style>
         body {
@@ -48,7 +48,7 @@
     </style>
 </head>
 <body>
-    <h1>Data Donasi Pembangunan MJB Puri 2</h1>
+    <h1>Data Pengeluaran Pembangunan MJB Puri 2</h1>
     <p>
         <strong>Periode:</strong>
         @if($start_date && $end_date)
@@ -61,27 +61,31 @@
             Tidak ditentukan
         @endif
     </p>
+    
     <table>
         <thead>
             <tr>
-                <th>#</th>
-                <th>Nama</th>
-                <th>Nominal Uang</th>
-                <th>Alamat</th>
-                <th>Kategori</th>
-                <th>Tgl Donasi</th>
+                <th scope="col" class="tex-center">#</th>
+                <th scope="col" class="tex-center">Nama</th>
+                <th scope="col" class="tex-center">Nominal Uang</th>
+                <th scope="col" class="tex-center">Keterangan</th>
+                <th scope="col" class="tex-center">Tgl Pengeluaran</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($donasi as $item)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $item->name }}</td>
-                <td>Rp {{ number_format($item->nominal_uang, 0, ',', '.') }}</td>
-                <td>{{ $item->alamat }}</td>
-                <td>{{ $item->kategori }}</td>
-                <td>{{ $item->tgl_donasi ? \Carbon\Carbon::parse($item->tgl_donasi)->format('d-m-Y') : '-' }}</td>
-            </tr>
+            @php $counter = 0 @endphp
+            @foreach ($pengeluaran as $item)
+                <tr>
+                    @php $counter++ @endphp
+                    <td>{{ $loop->iteration }}</td>
+                    <td class="tex-center">{{ $item->name }}</td>
+                    <td class="tex-center">Rp {{ number_format($item->nominal_uang, 0, ',', '.') }}
+                    </td>
+                    <td class="tex-center">{{ $item->keterangan }}</td>
+                    <td class="tex-center">
+                        {{ $item->tgl_pengeluaran ? \Carbon\Carbon::parse($item->tgl_pengeluaran)->format('d-m-Y') : '-' }}
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>

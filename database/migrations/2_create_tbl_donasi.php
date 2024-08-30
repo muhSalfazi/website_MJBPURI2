@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nominal_uang');
             $table->string('alamat');
-            $table->text('kategori');
+            $table->enum('kategori',['cash','transfer'])->nullable();
             $table->date('tgl_donasi')->nullable();
             $table->timestamps();
         });

@@ -14,45 +14,51 @@
         </nav>
     </div><!-- End Page Title -->
 
+    {{-- section start --}}
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Data Donasi</h5>
+                        <h5 class="card-title">Data Pengeluaran</h5>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
-                            Tambah Donasi
+                            Tambah Pengeluaran
                         </button>
 
                         <!-- Filter Form -->
-                        <form method="GET" action="{{ route('donasi.index') }}" class="mb-3">
+                        <form method="GET" action="{{ route('pengeluaran.index') }}" class="mb-3">
                             <div class="row mt-2">
- <div class="col-md-4">
-    <label for="start_date" class="form-label">Tanggal Mulai</label>
-    <input type="text" id="start_date" name="start_date" class="form-control"
-           value="{{ request('start_date') }}" 
-           onfocus="(this.type='date'); this.placeholder = '';" 
-           onblur="if(this.value==''){this.type='text';this.placeholder='Start Date';}" 
-           placeholder="Start Date">
-</div>
-<div class="col-md-4">
-    <label for="end_date" class="form-label">Tanggal Akhir</label>
-    <input type="text" id="end_date" name="end_date" class="form-control"
-           value="{{ request('end_date') }}" 
-           onfocus="(this.type='date'); this.placeholder = '';" 
-           onblur="if(this.value==''){this.type='text';this.placeholder='End Date';}" 
-           placeholder="End Date">
-</div>
+                                <div class="col-md-4">
+                                    <label for="start_date" class="form-label">Tanggal Mulai</label>
+                                    <input type="date" id="start_date" name="start_date" class="form-control"
+                                        onfocus="(this.type='date')"
+                                        onblur="if(this.value==''){this.type='text';this.placeholder='Start Date';}"
+                                        placeholder="Start Date" value="{{ request('start_date') }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="end_date" class="form-label">Tanggal Akhir</label>
+                                    <input type="text" id="end_date" name="end_date" class="form-control"
+                                        value="{{ request('end_date') }}"
+                                        onfocus="(this.type='date'); this.placeholder = '';"
+                                        onblur="if(this.value==''){this.type='text';this.placeholder='End Date';}"
+                                        placeholder="End Date">
+                                </div>
 
 
                                 <div class="col-md-4 d-flex align-items-end mt-1">
                                     <button type="submit" class="btn btn-primary btn-sm">Filter</button>
-                                    <a href="{{ route('donasi.index') }}" class="btn btn-secondary btn-sm ms-2">Reset</a>
+                                    <a href="{{ route('pengeluaran.index') }}"
+                                        class="btn btn-secondary btn-sm ms-2">Reset</a>
                                 </div>
                             </div>
                         </form>
-
-
+                        {{-- end filter form --}}
+                        {{-- download pdf --}}
+                        <button type="button" class="btn btn-danger btn-sm"
+                            onclick="window.location='{{ route('pengeluaranpdf', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}'">
+                            <i class="bi bi-file-pdf-fill"></i>Download PDF
+                        </button>
+                        {{-- end --}}
                         <div class="table-responsive ">
                             <table class="table datatable">
                                 <thead>
@@ -75,7 +81,9 @@
                                             <td class="tex-center">Rp {{ number_format($item->nominal_uang, 0, ',', '.') }}
                                             </td>
                                             <td class="tex-center">{{ $item->keterangan }}</td>
-                                            <td class="tex-center">{{ $item->created_at->format('d-m-Y') }}</td>
+                                            <td class="tex-center">
+                                                {{ $item->tgl_pengeluaran ? \Carbon\Carbon::parse($item->tgl_pengeluaran)->format('d-m-Y') : '-' }}
+                                            </td>
                                             <td class="tex-center">
                                                 <button type="button" class="btn btn-primary btn-sm ms-2 mt-1"
                                                     data-bs-toggle="modal"
@@ -84,10 +92,9 @@
                                                     class="d-inline" onsubmit="return confirm('Apa kamu yakin?');">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm ms-2"
-                                                        onsubmit="return confirm('Apa kamu yakin?');">Delete</button>
-                                                </form>
-
+                                                    <button type="submit" class="btn btn-danger btn-sm ms-2 mt-1"
+                                                        onsubmit="return confirm('Apa kamu yakin?');"><i
+                                                            class="bi bi-trash3">Delete</i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -101,9 +108,9 @@
             </div>
         </div>
     </section>
+    {{-- end section --}}
 
 
-    {{-- end --}}
 @section('scripts')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css">
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/umd/simple-datatables.js"></script>
@@ -137,6 +144,11 @@
                         <label for="keterangan" class="form-label">Keterangan</label>
                         <input type="text" class="form-control" id="keterangan" name="keterangan" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Tanggal Pengeluaran</label>
+                        <input type="date" class="form-control" id="tgl_pengeluaran" name="tgl_pengeluaran"
+                            required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -146,7 +158,7 @@
         </div>
     </div>
 </div>
-
+{{-- end modal create --}}
 {{-- modal update --}}
 @foreach ($pengeluaran as $item)
     <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1"
@@ -154,7 +166,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel{{ $item->id }}">Edit Donasi</h5>
+                    <h5 class="modal-title" id="editModalLabel{{ $item->id }}">Edit Pengeluaran</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('pengeluaran.update', $item->id) }}" method="POST">
@@ -177,6 +189,13 @@
                             <input type="text" class="form-control" id="keterangan{{ $item->id }}"
                                 name="keterangan" placeholder="{{ $item->keterangan }}">
                         </div>
+                        <div class="mb-3">
+                            <label for="tgl_pengeluaran" class="form-label">Tanggal Pengeluaran</label>
+                            <input type="date" class="form-control" id="tgl_pengeluaran" name="tgl_pengeluaran"
+                                value="{{ old('tgl_pengeluaran', $item->tgl_pengeluaran ? \Carbon\Carbon::parse($item->tgl_pengeluaran)->format('Y-m-d') : '') }}">
+                        </div>
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

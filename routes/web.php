@@ -52,15 +52,31 @@ Route::group(['middleware' => ['auth', 'check.session']], function () {
     Route::delete('donasi/{id}', [DonasiController::class, 'destroy'])->name('donasi.destroy');
 
     // Pengeluaran routes
-    Route::resource('pengeluaran', PengeluaranController::class);
+    // Route::resource('pengeluaran', PengeluaranController::class);
+    Route::get('pengeluaran', [PengeluaranController::class, 'index'])->name('pengeluaran.index');
+    Route::get('pengeluaran/create', [PengeluaranController::class, 'create'])->name('pengeluaran.create');
+    Route::post('pengeluaran', [PengeluaranController::class, 'store'])->name('pengeluaran.store');
+    Route::get('pengeluaran/{id}', [PengeluaranController::class, 'show'])->name('pengeluaran.show');
+    Route::get('pengeluaran/{id}/edit', [PengeluaranController::class, 'edit'])->name('pengeluaran.edit');
+    Route::put('pengeluaran/{id}', [PengeluaranController::class, 'update'])->name('pengeluaran.update');
+    Route::delete('pengeluaran/{id}', [PengeluaranController::class, 'destroy'])->name('pengeluaran.destroy');
+    
+    
+        // download pdf
+        Route::get('/pdf', [DonasiController::class, 'viewpdf'])->name('viewpdf');
+        Route::get('/pdf/pengeluaran', [PengeluaranController::class, 'pdfpengeluaran'])->name('pengeluaranpdf');
+    
+        // Pesan routes
+        Route::get('/pesan', [ShowPesanController::class, 'index'])->name('pesan.index');
+        Route::delete('/pesan/{id}', [ShowPesanController::class, 'destroy'])->name('pesan.destroy');
+        Route::post('/pesan/mark-accessed/{id}', [PesanController::class, 'markAccessed'])->name('pesan.markAccessed');
+    });
 
-    // download pdf
-    Route::get('/pdf', [DonasiController::class, 'viewpdf'])->name('viewpdf');
+    
+    
+    
+    
 
-    // Pesan routes
-    Route::get('/pesan', [ShowPesanController::class, 'index'])->name('pesan.index');
-    Route::delete('/pesan/{id}', [ShowPesanController::class, 'destroy'])->name('pesan.destroy');
-});
 
 
 

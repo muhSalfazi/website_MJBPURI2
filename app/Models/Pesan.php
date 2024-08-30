@@ -14,5 +14,6 @@ class Pesan extends Model
         'name',
         'phone',
         'pesan', 
+        'is_accessed'
     ];
 }

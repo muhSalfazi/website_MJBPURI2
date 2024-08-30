@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nominal_uang');
+            $table->date('tgl_pengeluaran');
             $table->text('keterangan');
             $table->timestamps();
         });

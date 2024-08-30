@@ -23,17 +23,32 @@
  <script src="assets/js/main1.js"></script>
  <!-- SweetAlert Scripts -->
  <script>
-     document.addEventListener('DOMContentLoaded', function() {
-         @if (session('msg'))
-             Swal.fire({
-                 title: '{{ session('error') ? 'Error' : 'Success' }}',
-                 text: '{{ session('msg') }}',
-                 icon: '{{ session('error') ? 'error' : 'success' }}',
-                 confirmButtonText: 'OK'
-             });
-         @endif
-     });
- </script>
+    // Cek apakah ada pesan flash dari session
+    @if (session('msg'))
+        Swal.fire({
+            icon: '{{ session('error') ? 'error' : 'success' }}',
+            title: '{{ session('error') ? 'Oops...' : 'Success' }}',
+            text: '{{ session('msg') }}',
+            showConfirmButton: true
+        });
+    @endif
+
+    // Menangani validasi error
+    @if ($errors->any())
+        Swal.fire({
+            icon: 'error',
+            title: 'Validation Errors',
+            html: `
+                <ul>
+                    @foreach ($errors->all() as $error)
+                         <p style="margin: 0; padding: 5px;">${{ $error }}</p>
+                    @endforeach
+                </ul>
+            `,
+            showConfirmButton: true
+        });
+    @endif
+</script>
  {{-- loader website --}}
  <script>
      // JavaScript untuk menyembunyikan loader setelah halaman selesai dimuat

@@ -36,7 +36,7 @@
                                 <div class="col-md-4">
                                     <label for="end_date" class="form-label">Tanggal Akhir</label>
                                     <input type="date" id="end_date" name="end_date" class="form-control"
-                                       onfocus="(this.type='date')"
+                                        onfocus="(this.type='date')"
                                         onblur="if(this.value==''){this.type='text';this.placeholder='End date';}"
                                         placeholder="End Date" value="{{ request('end_date') }}">
                                 </div>
@@ -46,8 +46,12 @@
                                 </div>
                             </div>
                         </form>
-
-                        <button type="button" class="btn btn-danger btn-sm" onclick="window.location='{{ route('viewpdf') }}'"><i class="bi bi-file-pdf-fill"></i>Download PDF</button>
+                        {{-- download pdf --}}
+                        <button type="button" class="btn btn-danger btn-sm"
+                            onclick="window.location='{{ route('viewpdf', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}'">
+                            <i class="bi bi-file-pdf-fill"></i>Download PDF
+                        </button>
+                        {{-- end --}}
 
                         <div class="table-responsive">
                             <table class="table datatable">
@@ -76,7 +80,7 @@
                                             <td class="text-center">
                                                 {{ $item->tgl_donasi ? \Carbon\Carbon::parse($item->tgl_donasi)->format('d-m-Y') : '-' }}
                                             </td>
-                                            
+
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-sm ms-2 mt-1"
                                                     data-bs-toggle="modal"
@@ -86,7 +90,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                        class="btn btn-danger btn-sm ms-2 mt-1">Delete</button>
+                                                        class="btn btn-danger btn-sm ms-2 mt-1"><i class="bi bi-trash3">Delete</i></button>
                                                 </form>
 
                                             </td>
@@ -114,20 +118,25 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Silahkan isi nama" required>
                         </div>
                         <div class="mb-3">
                             <label for="nominal_uang" class="form-label">Nominal Uang</label>
-                            <input type="number" class="form-control" id="nominal_uang" name="nominal_uang" required>
+                            <input type="number" class="form-control" id="nominal_uang" name="nominal_uang" placeholder="Inputkan nominal uang donasi" required>
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" required>
+                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="silahkan isi Alamat Pendonasi"required>
                         </div>
                         <div class="mb-3">
-                            <label for="kategori" class="form-label">kategori</label>
-                            <input type="text" class="form-control" id="kategori" name="kategori">
+                            <label for="kategori" class="form-label">Kategori</label>
+                            <select class="form-control" id="kategori" name="kategori">
+                                <option value="" disabled selected>Pilih Kategori</option>
+                                <option value="cash" {{ old('kategori') == 'cash' ? 'selected' : '' }}>Cash</option>
+                                <option value="transfer" {{ old('kategori') == 'transfer' ? 'selected' : '' }}>Transfer</option>
+                            </select>
                         </div>
+                        
                         <div class="mb-3">
                             <label for="tgl_donasi" class="form-label">Tanggal Donasi</label>
                             <input type="date" class="form-control" id="tgl_donasi" name="tgl_donasi">
@@ -173,15 +182,20 @@
                                     name="alamat" placeholder="{{ $item->alamat }}">
                             </div>
                             <div class="mb-3">
-                                <label for="kategori{{ $item->id }}" class="form-label">kategori</label>
-                                <input type="text" class="form-control" id="kategori{{ $item->id }}"
-                                    name="kategori" placeholder="{{ $item->kategori }}">
+                                <label for="kategori{{ $item->id }}" class="form-label">Kategori</label>
+                            <select class="form-control" id="kategori{{ $item->id }}" name="kategori">
+                                <option value="" disabled {{ $item->kategori == '' ? 'selected' : '' }}>Pilih Kategori</option>
+                                <option value="cash" {{ old('kategori', $item->kategori) == 'cash' ? 'selected' : '' }}>Cash</option>
+                                <option value="transfer" {{ old('kategori', $item->kategori) == 'transfer' ? 'selected' : '' }}>Transfer</option>
+                            </select>
+                                
                             </div>
                             <div class="mb-3">
                                 <label for="tgl_donasi" class="form-label">Tanggal Donasi</label>
-                                <input type="date" class="form-control" id="tgl_donasi" name="tgl_donasi" value="{{ old('tgl_donasi', $item->tgl_donasi ? \Carbon\Carbon::parse($item->tgl_donasi)->format('Y-m-d') : '') }}">
+                                <input type="date" class="form-control" id="tgl_donasi" name="tgl_donasi"
+                                    value="{{ old('tgl_donasi', $item->tgl_donasi ? \Carbon\Carbon::parse($item->tgl_donasi)->format('Y-m-d') : '') }}">
                             </div>
-                            
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

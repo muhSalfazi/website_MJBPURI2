@@ -16,9 +16,12 @@ class Pengeluaran extends Model
         'nominal_uang',
         'keterangan',
         'created_at',
+        'tgl_pengeluaran'
     ];
 
     protected $casts = [
     'created_at' => 'datetime',
     ];
+
+    protected $dates = ['tgl_pengeluaran'];
 }

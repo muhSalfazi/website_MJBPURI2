@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengeluaran;
-use Illuminate\Support\Facades\Gate;
+use Mpdf\Mpdf;
 
 class PengeluaranController extends Controller
 {
@@ -19,19 +19,20 @@ class PengeluaranController extends Controller
         $query = Pengeluaran::query();
 
         // Apply date filters if provided
-        if ($request->has('start_date') && $request->has('end_date')) {
+           // Apply date filters if provided
+           if ($request->has('start_date') && $request->has('end_date')) {
             $startDate = $request->input('start_date');
             $endDate = $request->input('end_date');
 
             // Sanitize input to prevent any malformed data
-            $query->whereBetween('created_at', [
-                filter_var($startDate, FILTER_SANITIZE_STRING), 
-                filter_var($endDate, FILTER_SANITIZE_STRING) . ' 23:59:59'
-            ]);
+            $query->whereBetween('tgl_pengeluaran', [filter_var($startDate, FILTER_SANITIZE_STRING), filter_var($endDate, FILTER_SANITIZE_STRING) . ' 23:59:59']);
         }
 
+    
+        
+
         // Fetch expenses sorted by created_at in descending order
-        $pengeluaran = $query->orderBy('created_at', 'desc')->get();
+        $pengeluaran = $query->orderBy('tgl_pengeluaran', 'desc')->get();
 
         return view('pengeluaran.index', compact('pengeluaran'));
     }
@@ -42,6 +43,7 @@ class PengeluaranController extends Controller
             'name' => 'required|string|max:255',
             'nominal_uang' => 'required|numeric',
             'keterangan' => 'required|string|max:255',
+            'tgl_pengeluaran' => 'required|date',
         ]);
 
         Pengeluaran::create($request->all());
@@ -53,16 +55,17 @@ class PengeluaranController extends Controller
     {
         // Validate the request with nullable fields
         $request->validate([
-            'name' => 'nullable|string|max:255',
+            'name' => 'sometimes|max:255',
             'nominal_uang' => 'nullable|numeric',
             'keterangan' => 'nullable|string|max:255',
+          'tgl_pengeluaran' => 'sometimes|date'
         ]);
 
         // Find the record by ID or fail
         $pengeluaran = Pengeluaran::findOrFail($id);
 
         // Update only fields that are present in the request
-        $data = $request->only(['name', 'nominal_uang', 'keterangan']);
+        $data = $request->only(['name', 'nominal_uang', 'keterangan','tgl_pengeluaran']);
 
         // Avoid setting fields to null if they are not provided in the request
         foreach ($data as $key => $value) {
@@ -80,11 +83,63 @@ class PengeluaranController extends Controller
 
     public function destroy($id)
     {
-    
-
         $pengeluaran = Pengeluaran::find($id);
+    
+        if (!$pengeluaran) {
+            return redirect()->route('pengeluaran.index')
+                             ->with('msg', 'Pengeluaran tidak ditemukan.')
+                             ->with('error', true);
+        }
+    
         $pengeluaran->delete();
-
-        return redirect()->route('pengeluaran.index')->with('msg', 'Pengeluaran deleted successfully.')->with('error', false);
+    
+        return redirect()->route('pengeluaran.index')
+                         ->with('msg', 'Pengeluaran berhasil dihapus.')
+                         ->with('error', false);
     }
+
+    public function pdfpengeluaran(Request $request)
+{
+    // Validate input dates
+    $request->validate([
+        'start_date' => 'nullable|date_format:Y-m-d',
+        'end_date' => 'nullable|date_format:Y-m-d',
+    ]);
+
+    $startDate = $request->input('start_date');
+    $endDate = $request->input('end_date');
+
+    $query = Pengeluaran::query();
+
+    // Apply date filters if provided
+    if ($startDate && $endDate) {
+        $query->whereBetween('tgl_pengeluaran', [
+            $startDate . ' 00:00:00', 
+            $endDate . ' 23:59:59'
+        ]);
+    }
+
+    // Fetch data sorted by 'tgl_pengeluaran' in descending order
+    $pengeluaran = $query->orderBy('tgl_pengeluaran', 'desc')->get();
+
+    // Generate HTML view with dates
+    $html = view('pengeluaranpdf', [
+        'pengeluaran' => $pengeluaran,
+        'start_date' => $startDate,
+        'end_date' => $endDate
+    ])->render();
+
+    try {
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->WriteHTML($html);
+
+        return $mpdf->Output('pengeluaran.pdf', 'D');
+    } catch (\Exception $e) {
+        // Handle exception
+        return response()->json(['error' => 'Failed to generate PDF'], 500);
+    }
+}
+
+    
+    
 }

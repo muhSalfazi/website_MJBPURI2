@@ -346,9 +346,6 @@
                                     data-gallery="portfolio-gallery-product" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
                                 </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
@@ -362,9 +359,6 @@
                                 <a href="{{ asset('assets/img/denah_mjb1.jpg') }}" title="Tampak Depan"
                                     data-gallery="portfolio-gallery-app" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
-                                </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
                                 </a>
                             </div>
                         </div><!-- End Portfolio Item -->
@@ -381,9 +375,6 @@
                                     data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
                                 </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
@@ -398,9 +389,6 @@
                                 <a href="{{ asset('assets/img/denah_mjb2.jpg') }}" title="Tampak samping"
                                     data-gallery="portfolio-gallery-product" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
-                                </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
                                 </a>
                             </div>
                         </div><!-- End Portfolio Item -->
@@ -419,9 +407,6 @@
                                     data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
                                 </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
@@ -436,9 +421,6 @@
                                 <a href="{{ asset('assets/img/denah_mjb4.jpg') }}" title="Layout Ploting Area"
                                     data-gallery="portfolio-gallery-app" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
-                                </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
                                 </a>
                             </div>
                         </div><!-- End Portfolio Item -->
@@ -456,9 +438,6 @@
                                     data-gallery="portfolio-gallery-product" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
                                 </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
@@ -474,9 +453,6 @@
                                     data-gallery="portfolio-gallery-product" class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
                                 </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
@@ -491,9 +467,6 @@
                                     title="Rencana Kolom Struktur Lt. 1" data-gallery="portfolio-gallery-branding"
                                     class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
-                                </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
                                 </a>
                             </div>
                         </div><!-- End Portfolio Item -->
@@ -511,9 +484,6 @@
                                     class="glightbox preview-link">
                                     <i class="bi bi-zoom-in"></i>
                                 </a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
                             </div>
                         </div><!-- End Portfolio Item -->
 
@@ -530,10 +500,11 @@
         <section id="contact" class="contact section">
 
             <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Contact</h2>
-                <p><span>Need Help?</span> <span class="description-title">Contact Us</span></p>
-            </div><!-- End Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p><span>Saran & Kritik</span> atau <span class="description-title">Pertanyaan dari Pengunjung</span></p>
+</div>
+<!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -677,21 +648,23 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('Nomor REK telah disalin ke clipboard.');
+        }).catch(function() {
+            alert('Failed to copy No Rek.');
+        });
+    }
+</script>
 
     {{-- contact bendahara --}}
-    <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                alert('Nomor REK telah disalin ke clipboard.');
-            }, function() {
-                alert('Failed to copy No Rek.');
-            });
-        }
+   <script>
+    function contactWhatsApp() {
+        window.open('https://wa.me/6281297412347', '_blank');
+    }
+</script>
 
-        function contactWhatsApp - () {
-            window.open('https://wa.me/6281297412347', '_blank');
-        }
-    </script>
 
 
 </body>

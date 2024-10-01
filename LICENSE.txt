@@ -1,21 +1,17 @@
-MIT License
+Copyright © 2024 MUHAMAD SALMAN FAUZI. All rights reserved.
 
-Copyright (c) [2024] [Muhamad Salman Fauzi]
+Lisensi Proprietary
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Dengan ini, pemilik hak cipta, Salman fauzi, memberikan izin untuk menggunakan perangkat lunak ini dengan syarat dan ketentuan berikut:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. **Penggunaan Terbatas**: Perangkat lunak ini hanya boleh digunakan untuk tujuan pribadi dan non-komersial. Penggunaan untuk tujuan komersial hanya diperbolehkan dengan izin tertulis dari pemilik hak cipta.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. **Larangan Modifikasi**: Pengguna tidak diperkenankan untuk memodifikasi, mendistribusikan, atau menjual kembali perangkat lunak ini tanpa izin tertulis dari pemilik hak cipta.
+
+3. **Pemberitahuan Hak Cipta**: Semua salinan perangkat lunak ini harus menyertakan pemberitahuan hak cipta ini dan semua catatan yang menyertainya.
+
+4. **Tidak Ada Jaminan**: Perangkat lunak ini disediakan "sebagaimana adanya", tanpa jaminan dalam bentuk apa pun, baik tersurat maupun tersirat, termasuk tetapi tidak terbatas pada jaminan perdagangan atau kesesuaian untuk tujuan tertentu.
+
+5. **Pelanggaran Lisensi**: Pelanggaran terhadap ketentuan lisensi ini dapat mengakibatkan pencabutan izin penggunaan dan tindakan hukum lebih lanjut.
+
+Dengan menggunakan perangkat lunak ini, Anda setuju untuk mematuhi syarat dan ketentuan yang ditetapkan dalam lisensi ini.
